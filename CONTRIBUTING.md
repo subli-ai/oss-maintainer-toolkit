@@ -2,26 +2,10 @@
 
 Thank you for considering a contribution.
 
-## Good contributions
+1. Open an issue for substantial changes so the problem and scope are clear.
+2. Create a focused branch and make the smallest useful change.
+3. Add or update tests for changed behavior.
+4. Run `python -m pytest` and `./VERIFY.sh`.
+5. Explain the behavior change and any limitations in your pull request.
 
-- Add tests for supported repository layouts.
-- Improve cross-platform path handling.
-- Fix false positives or false negatives in the presence checks.
-- Improve accessibility and clarity of CLI output.
-- Document limitations and edge cases with examples.
-
-## Development
-
-The project has no third-party runtime dependencies. Run the test suite with:
-
-```bash
-python -m unittest discover -s tests -v
-```
-
-## Pull requests
-
-Please explain the issue, describe the change, include tests, and mention the Python versions and operating systems tested. Do not claim that presence-only checks provide security or compliance certification.
-
-## Attribution
-
-Do not copy code or documentation from other projects without checking its licence and retaining required notices.
+Please do not submit fabricated test results, artificial activity, or unrelated formatting changes.

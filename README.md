@@ -1,46 +1,54 @@
 # OSS Maintainer Toolkit
 
-A small, dependency-free Python command-line toolkit for maintaining public open-source repositories. It checks common repository hygiene basics and produces a JSON report that maintainers can review locally.
+A dependency-free Python CLI for checking basic open-source repository hygiene.
 
-**Status:** early starter project. It is not affiliated with Anthropic, GitHub, or OpenSSF, and it does not claim to satisfy any programme eligibility threshold.
-
-## Why this exists
-
-Small maintainers often need a repeatable way to check whether a repository has a licence, contribution guide, security policy, code of conduct, changelog, tests, and release notes. This tool provides a transparent, offline checklist so those gaps are visible.
-
-## Requirements
-
-- Python 3.10+
-- No third-party runtime dependencies
-
-## Usage
+## Install locally
 
 ```bash
-python -m src.oss_maintainer_toolkit path/to/repository
-python -m src.oss_maintainer_toolkit path/to/repository --json report.json
+python3 -m pip install -e ".[test]"
 ```
 
-The tool only reads repository files. It does not change files, upload code, contact services, or claim that a repository is secure or compliant.
+Then run:
 
-## Checks
+```bash
+oss-maintainer-toolkit check .
+```
 
-- MIT, Apache-2.0, BSD, GPL and other common licence file names
-- README, CONTRIBUTING, SECURITY, CODE_OF_CONDUCT and CHANGELOG presence
-- GitHub Actions workflow directory presence
-- Test directory presence
+For machine-readable output:
 
-These are presence checks, not legal, security, CI, or quality certification. A human must verify the contents and applicability.
+```bash
+oss-maintainer-toolkit check . --json report.json
+```
+
+To return a non-zero exit code when any checklist item is missing:
+
+```bash
+oss-maintainer-toolkit check . --fail-on-missing
+```
+
+## What it checks
+
+- Non-empty README and licence files
+- CONTRIBUTING guide, SECURITY policy, CODE_OF_CONDUCT and CHANGELOG
+- At least one non-empty GitHub Actions workflow YAML file
+- At least one Python test file in a tests or test directory
+
+The tool checks for project-file presence; it does not validate the quality or correctness of their contents. A passing checklist is not a security audit, legal opinion, compliance certification, or measure of project adoption.
+
+It does not measure usage, package downloads, dependent repositories, contributors, merged pull requests, or OpenSSF criticality.
 
 ## Development
 
 ```bash
-python -m unittest discover -s tests -v
+python3 -m pip install -e ".[test]"
+python3 -m pytest
+./VERIFY.sh
 ```
+
+## Status
+
+Early open-source project. Focused bug reports and pull requests are welcome.
 
 ## Licence
 
-MIT. Copyright (c) 2026 the project contributors. See [LICENSE](LICENSE).
-
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md). Real bug reports, tests, documentation and cross-platform improvements are welcome.
+MIT. See LICENSE.
