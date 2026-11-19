@@ -52,3 +52,9 @@ Early open-source project. Focused bug reports and pull requests are welcome.
 ## Licence
 
 MIT. See LICENSE.
+
+## Related open-source project showcase
+
+![15 developer tools project map](docs/assets/oss-project-map.svg)
+
+Explore the [15-project showcase](docs/PROJECT_SHOWCASE.md): AI agent safety checks, AI infrastructure experiments, and practical developer utilities. The projects are **separate MVPs**, not bundled into this repository, and the showcase makes no claim about public adoption or production readiness.
