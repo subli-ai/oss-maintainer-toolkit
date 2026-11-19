@@ -55,6 +55,6 @@ MIT. See LICENSE.
 
 ## Related open-source project showcase
 
-![15 developer tools project map](docs/assets/oss-project-map.svg)
+![23 developer tools project map](docs/assets/oss-project-map.svg)
 
-Explore the [15-project showcase](docs/PROJECT_SHOWCASE.md): AI agent safety checks, AI infrastructure experiments, and practical developer utilities. The projects are **separate MVPs**, not bundled into this repository, and the showcase makes no claim about public adoption or production readiness.
+Explore the [23-project showcase](docs/PROJECT_SHOWCASE.md): AI agent safety checks, AI infrastructure experiments, practical developer utilities, and eight more agent-operations MVPs. The projects are **separate MVPs**, not bundled into this repository, and the showcase makes no claim about public adoption or production readiness.
