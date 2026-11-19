@@ -1,60 +1,89 @@
+<p align="center">
+  <img src="docs/assets/oss-toolkit-hero.svg" alt="OSS Maintainer Toolkit: check eight repository basics before sharing your code" width="100%">
+</p>
+
 # OSS Maintainer Toolkit
 
-A dependency-free Python CLI for checking basic open-source repository hygiene.
+**A simple pre-publishing checklist for open-source projects.**
 
-## Install locally
+**Imagine this:** You finish coding, put your project on GitHub, and want other people to try it. But you forgot a licence, contribution instructions, or tests. This tool checks whether eight common project essentials are present and shows which ones are missing.
+
+**Who is it for?** First-time open-source authors, indie developers, maintainers, and people using AI coding assistants.
+
+**What is this repository?** It contains **one working Python command-line tool**: `oss-maintainer-toolkit`. Below, it also links to a **separate visual catalog of 23 other MVP project concepts**. Those 23 projects are *not included or installable from this repository*.
+
+## What does it actually check?
+
+![Example of the eight checks: README, licence, contributing, security, code of conduct, changelog, CI workflow and Python test files](docs/assets/repo-check-example.svg)
+
+The eight checks are: README, licence, contributing guide, security policy, code of conduct, changelog, GitHub Actions workflow, and Python test files. It only checks for **matching non-empty files** (or a suitable workflow/test file). It does **not** validate the content, pass tests for you, or secure the repository.
+
+## Try it on your computer
+
+> Requires Python 3.9 or newer and Git. Commands below install only in a local virtual environment.
 
 ```bash
-python3 -m pip install -e ".[test]"
-```
-
-Then run:
-
-```bash
+git clone https://github.com/subli-ai/oss-maintainer-toolkit.git
+cd oss-maintainer-toolkit
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -e .
 oss-maintainer-toolkit check .
 ```
 
-For machine-readable output:
+**To scan another project:** `oss-maintainer-toolkit check /path/to/your-project`
 
-```bash
-oss-maintainer-toolkit check . --json report.json
+**For CI failure when files are missing:** `oss-maintainer-toolkit check . --fail-on-missing`
+
+**To save a JSON report:** `oss-maintainer-toolkit check . --json report.json`
+
+### How to read the result
+
+The command prints a JSON report. For example, a *hypothetical* project with six items present and two missing might show:
+
+```json
+{
+  "summary": {
+    "total": 8,
+    "present": 6,
+    "missing": ["security_policy", "code_of_conduct"]
+  }
+}
 ```
 
-To return a non-zero exit code when any checklist item is missing:
+The real report also includes individual checks, matching file paths and limitations. A missing item is a **suggestion to review**, not proof that the repository is unsafe or legally noncompliant.
 
-```bash
-oss-maintainer-toolkit check . --fail-on-missing
-```
+## Also exploring 23 AI/developer tool ideas
 
-## What it checks
+![Five AI coding quality tools explained using everyday situations](docs/assets/agent-safety-explained.svg)
 
-- Non-empty README and licence files
-- CONTRIBUTING guide, SECURITY policy, CODE_OF_CONDUCT and CHANGELOG
-- At least one non-empty GitHub Actions workflow YAML file
-- At least one Python test file in a tests or test directory
+The five tools above help flag unexpected file edits, repeated AI actions, nonexistent APIs, unproven completion and unfinished code. They are **advisory MVPs**, not full automatic prevention systems.
 
-The tool checks for project-file presence; it does not validate the quality or correctness of their contents. A passing checklist is not a security audit, legal opinion, compliance certification, or measure of project adoption.
+![Visual overview of 23 developer-tool MVPs across four groups](docs/assets/oss-project-map.svg)
 
-It does not measure usage, package downloads, dependent repositories, contributors, merged pull requests, or OpenSSF criticality.
+| Collection | What's the problem? | Example projects |
+|---|---|---|
+| **AI coding safety (5)** | AI-generated changes are hard to trust | ScopeFence, LoopBrake, APITruth, DoneProof, MockLeak |
+| **AI infrastructure (5)** | Agents, MCP tools and migrations need better checks | Agent State Receipts, MCP Retry Lab, Spec Oracle |
+| **Developer utilities (5)** | New projects need accessible, readable information | A11y Scout, Repo Story, Traceback Guide |
+| **Agent operations (8)** | AI cost, permissions and task handoffs are difficult to inspect | Billshock, ActionLedger, PolicyMirror, HandoffVault |
+
+**[Open the illustrated guide to all 23 tools →](docs/PROJECT_SHOWCASE.md)** — Each tool has a plain-English problem, example, what its MVP currently does, and what it does **not** do yet.
+
+**Important:** The 23-project catalog is **documentation**, not 23 repositories or a product installer. Source code for those projects was prepared separately. No public usage or adoption is claimed.
 
 ## Development
 
 ```bash
-python3 -m pip install -e ".[test]"
-python3 -m pytest
+python -m pip install -e ".[test]"
+python -m pytest
 ./VERIFY.sh
 ```
 
-## Status
+## Contributions and project status
 
-Early open-source project. Focused bug reports and pull requests are welcome.
+This is an early, dependency-free Python CLI. Practical feedback, bug reports, and focused pull requests are welcome; see [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md).
 
-## Licence
+**What it does not prove:** Software quality, licence compliance, security, test quality, GitHub adoption, package download counts or eligibility for the Claude for Open Source program.
 
-MIT. See LICENSE.
-
-## Related open-source project showcase
-
-![23 developer tools project map](docs/assets/oss-project-map.svg)
-
-Explore the [23-project showcase](docs/PROJECT_SHOWCASE.md): AI agent safety checks, AI infrastructure experiments, practical developer utilities, and eight more agent-operations MVPs. The projects are **separate MVPs**, not bundled into this repository, and the showcase makes no claim about public adoption or production readiness.
+**Licence:** MIT — see [LICENSE](LICENSE).
