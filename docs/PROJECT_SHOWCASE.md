@@ -2,7 +2,7 @@
 
 ![Open-source developer project map](assets/oss-project-map.svg)
 
-This is a **catalog of 15 independently scoped MVPs** supplied as three source bundles. These projects are **not included in this repository**, and listing them here does not mean they have been published to GitHub or deployed. This repo remains the independent **OSS Maintainer Toolkit**.
+This is a **catalog of 23 independently scoped MVPs** supplied as four source bundles. These projects are **not included in this repository**, and listing them here does not mean they have been published to GitHub or deployed. This repo remains the independent **OSS Maintainer Toolkit**.
 
 ## AI Agent Safety — five tools
 
@@ -34,9 +34,24 @@ This is a **catalog of 15 independently scoped MVPs** supplied as three source b
 | **Repo Story** | Explain what a repository contains |
 | **Traceback Guide** | Make programming error traces easier to interpret |
 
+## Agent Operations — eight more MVPs
+
+| Project | What it currently does | What it does **not** yet do |
+|---|---|---|
+| **Billshock** | Estimates model-request cost from supplied rates | Does not inspect live endpoints or measure tokens |
+| **FlowWitness** | Checks parent links in supplied trace steps | Does not capture browser or database activity |
+| **ActionLedger** | Creates and verifies a hash chain over supplied events | Does not collect host-level process/file/network activity |
+| **PolicyMirror** | Resolves supplied allow/ask/deny rules | Does not read Codex/Claude client configurations |
+| **MCPRealityBench** | Compares declared and supplied observed effects | Does not run an arbitrary MCP server or sandbox |
+| **HandoffVault** | Stores and acknowledges local SQLite task results | Has no agent-framework adapter |
+| **MergeScope** | Finds overlaps in supplied JSON change manifests | Does not parse Git branches or source ASTs |
+| **SkillProof** | Checks whether declared executables are installed | Does not run a skill in a clean container |
+
+**Verification for this eight-project bundle (19 Nov 2026):** 15/15 included unit tests passed, 8/8 Python wheels built, and nine local functional smoke assertions passed. A one-command Mac checker is provided in the separate source ZIP; it has not been run on the user's Mac in this session. These are early 0.1.0 foundations, not completed integrations or independent GitHub repositories.
+
 ## Verification and publication
 
-The supplied bundles previously reported **65 passing included tests total** (31 agent tools, 17 infrastructure tools and 17 universal tools). These are *project unit tests*, not a claim of complete integration, packaging or security certification. Wheel builds and live integrations were not fully verified.
+The first three supplied bundles previously reported **65 passing included tests total** (31 agent tools, 17 infrastructure tools and 17 universal tools). The fourth bundle added **15 passing tests**, bringing the portfolio total to **80 included unit tests**. The eight-project bundle also passed eight local wheel builds and nine smoke assertions. These are *project unit tests*, not a claim of complete integration, packaging or security certification. Wheel builds of the first three bundles and live integrations across the portfolio were not fully verified.
 
 The source archives are provided separately to the repository owner. They are **not hosted or installed by this page**. Before publishing any as a standalone repository, test clean installation and real example workflows, review license/dependencies and security, and add screenshots of actual output.
 
